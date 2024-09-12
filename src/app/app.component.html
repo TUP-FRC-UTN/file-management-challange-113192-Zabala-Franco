@@ -1,1 +1,36 @@
-add code here!!
+<div>
+    <ng-container>
+        <h1>ARCHIVOS 
+            <button type="submit" class="btn btn-primary">NUEVO</button>
+        </h1>
+    </ng-container>
+</div>
+<hr>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Dueños</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterar sobre FILE_LIST para mostrar los archivos -->
+            <tr *ngFor="let item of files; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.name }}</td>
+                <!-- <td>{{ item.creation | date:'short' }}</td> -->
+                <td>
+                    <!-- Mostrar los dueños de cada archivo -->
+                    <span *ngFor="let owner of item.owners; let last = last">
+                        {{ owner.name }}<span *ngIf="!last">, </span>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
